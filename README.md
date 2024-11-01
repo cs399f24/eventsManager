@@ -1,1 +1,1 @@
-# eventsManager
+# Events Manager
