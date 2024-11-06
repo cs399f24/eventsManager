@@ -4,35 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events Manager</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+    <script>
+        // Update this to your Flask API's public IP address or domain
+        const server = 'http://204.236.195.38';
+       
+
+        async function loadEvents() {
+            try {
+                console.log("Before Fetch")
+                const response = await fetch(server + '/api/events');
+                console.log("After Fetch")
+                if (response.ok) {
+                    console.log("Response is OK")
+                    const data = await response.json();
+                    console.log("Data is: ", data)
+                    document.getElementById('results').innerText = `Events: ${JSON.stringify(data)}`;
+                    console.log("Data done ", data)
+                } else {
+                    alert('Failed to fetch events');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while fetching events');
+            }
         }
-        .container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #666;
-        }
-    </style>
+
+        window.onload = loadEvents;
+    </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to Events Manager</h1>
-        <p>Manage and view all your events here.</p>
-    </div>
+    <h1>Events Manager</h1>
+    <h2>Current Events:</h2>
+    <div id="results">Fetching events...</div>
 </body>
 </html>
+
