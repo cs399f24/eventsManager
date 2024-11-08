@@ -16,15 +16,8 @@ and the frontend can be hosted on an S3 bucket.
 
 ## Setup Instructions
 
-### Step 1: Clone the Repository
 
-1. Clone the GitHub repository to your local machine:
-   ```bash
-   git clone https://github.com/yourusername/events-manager.git
-   cd events-manager
-   ```
-
-### Step 2: Set Up the EC2 Instance
+### Step 1: Set Up the EC2 Instance
 
 1. Launch an EC2 instance (Amazon Linux or Ubuntu recommended).
 2. SSH into your instance:
@@ -32,32 +25,73 @@ and the frontend can be hosted on an S3 bucket.
    ssh -i "your-key.pem" ec2-user@your-public-ip
    ```
 
-3. Install Python dependencies:
+### Step 2: Clone the Repository
+
+1. Install git:
    ```bash
-   pip3 install Flask Flask-CORS
+   sudo yum install git
    ```
 
-4. Run the Flask app on the instance:
+2. Clone the GitHub repository to your local machine:
+   ```bash
+   git clone https://github.com/yourusername/events-manager.git
+   ```
+
+3. Change to the working directory:
+   ```bash
+   cd events-manager
+   ```
+
+4. Create Virtual Enviroment:
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+
+5. Install Python3 pip package:
+   ```bash
+   sudo yum install python3-pip -y
+   ```
+
+6. Install Python dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+7. Run the Flask app on the instance:
    ```bash
    sudo python3 app.py
    ```
    
    The app should now be running and accessible at `http://your-public-ip/api/events`.
 
-### Step 3: Update Frontend with EC2 IP Address
+### Step 4: Update Frontend with EC2 IP Address
 
 1. Open `index.html` from the cloned repository and replace the server variable with your EC2 instance’s public IP address:
    ```javascript
    const server = 'http://your-public-ip';
    ```
 
-### Step 4: Host the Frontend on S3
+### Step 5: Host the Frontend on S3
 
 1. Go to your AWS S3 dashboard and create a new bucket.
 2. In the **Permissions** tab, enable **public access** and configure **bucket policy** to allow public access to files.
 3. Upload `index.html` and all necessary frontend files to your S3 bucket.
 4. Enable **Static Website Hosting** in the bucket properties, and note the URL provided for accessing your site.
+ ```bash
+ {
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::your-bucket-name/"
+        }
+    ]
+}
+```
 
-### Step 5: Access the Application
+### Step 6: Access the Application
 
 Navigate to the S3 URL from Step 4 to use the application.
