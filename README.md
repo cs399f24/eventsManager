@@ -85,9 +85,9 @@ and the frontend can be hosted on an S3 bucket.
     "Statement": [
         {
             "Effect": "Allow",
-            "Principal": "",
+            "Principal": "*",
             "Action": "s3:GetObject",
-            "Resource": "arn:aws:s3:::your-bucket-name/"
+            "Resource": "arn:aws:s3:::your-bucket-name/*"
         }
     ]
 }
