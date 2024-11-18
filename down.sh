@@ -10,3 +10,4 @@ if [ -n "$FLASK_PID" ]; then
 else
     echo "Flask app is not running."
 fi
+
