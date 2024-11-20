@@ -18,8 +18,7 @@ and the frontend can be hosted on an S3 bucket.
 
 # CLI Setup Instructions
 # Cloud 9 Setup Instructions
-
-1. Configure 9 
+##Configure 9 
 
 ### Step 1: Set Up the EC2 Instance
 
