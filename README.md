@@ -8,15 +8,18 @@ and the frontend can be hosted on an S3 bucket.
 
 ## Prerequisites
 
-- **AWS Account** (for EC2 and S3 services)
+- **AWS Account** (Amazon Web Services)
 - **AWS EC2 instance** with a public IP address
 - **AWS S3 bucket** for static file hosting
+- **AWS DynamioDB** for storing 
 - Basic knowledge of Flask, HTML, and JavaScript
 
 ---
 
-## Setup Instructions
+## CLI Setup Instructions
+## Cloud 9 Setup Instructions
 
+1. Configure 9 
 
 ### Step 1: Set Up the EC2 Instance
 
