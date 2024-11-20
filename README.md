@@ -16,8 +16,8 @@ and the frontend can be hosted on an S3 bucket.
 
 ---
 
-## CLI Setup Instructions
-## Cloud 9 Setup Instructions
+# CLI Setup Instructions
+# Cloud 9 Setup Instructions
 
 1. Configure 9 
 
