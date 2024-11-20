@@ -19,6 +19,12 @@ and the frontend can be hosted on an S3 bucket.
 
 ## EC2 Instance 
 
+1. Open AWS Managment Console
+2. In the search box to the top right of AWS Managment Console, search for and choose EC2 to open the AWS EC2 console
+3. Choose Launch Instance
+   Instance Name: ec2EventsManager
+5. 
+
 ## S3 Bucket
 
 ## DynamioDB
