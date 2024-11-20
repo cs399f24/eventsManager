@@ -15,10 +15,22 @@ and the frontend can be hosted on an S3 bucket.
 - Basic knowledge of Flask, HTML, and JavaScript
 
 ---
+# Configuration
+
+## EC2 Instance 
+
+## S3 Bucket
+
+## DynamioDB
 
 # CLI Setup Instructions
+
+
 # Cloud 9 Setup Instructions
+
+
 ## Configure 9 
+
 
 ### Step 1: Set Up the EC2 Instance
 
