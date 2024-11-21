@@ -126,6 +126,7 @@ and the frontend can be hosted on an S3 bucket.
    ```bash
    sudo yum install git
    ```
+   When prompted, type y 
 4. Change to the working directory:
    ```bash
    cd eventsManager
