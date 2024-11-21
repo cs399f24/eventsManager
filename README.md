@@ -22,15 +22,17 @@ and the frontend can be hosted on an S3 bucket.
 1. Open AWS Managment Console
 2. In the search box to the top right of AWS Managment Console, search for and choose EC2 to open the AWS EC2 console
 3. Choose Launch Instance
+   
    Instance Name: ec2EventsManager
+   
    Amazon Machine Image: Keep Amazon Linux
    Instance Type: Keep t2.mirco
    Key pair: select the dropdown and choose vockey
    Security Group: Select to Allow HTTP traffic from the internet
    Keep the rest of the default settings and choose Launch Instance
-4. Once the instance is in the running state, select the instance and then select the actions dropdown. Select Security and then select change security groups. In the slect security groups search bar, type httpssh and select the correct security group. Hit add security group and click save.  
-5. Select the instance again and then select the actions dropdown. Select Security and then select Modify IAM role. Click the Choose IAM role dropdown and select LabInstanceProfile. Then, click update IAM role.
-6. Lastly, select the instance again and choose the security tab. Scroll down to IAM role and it should say LabRole. Scroll down to Security Groups and it should have the httpssh and the launch-wizard-13 security groups. If you don't have the IAM role or right security groups. Repeat steps 4 through 5. Otherwise, you have successfully created and configured the EC2 instance.
+5. Once the instance is in the running state, select the instance and then select the actions dropdown. Select Security and then select change security groups. In the slect security groups search bar, type httpssh and select the correct security group. Hit add security group and click save.  
+6. Select the instance again and then select the actions dropdown. Select Security and then select Modify IAM role. Click the Choose IAM role dropdown and select LabInstanceProfile. Then, click update IAM role.
+7. Lastly, select the instance again and choose the security tab. Scroll down to IAM role and it should say LabRole. Scroll down to Security Groups and it should have the httpssh and the launch-wizard-13 security groups. If you don't have the IAM role or right security groups. Repeat steps 4 through 5. Otherwise, you have successfully created and configured the EC2 instance.
   
 
 ## S3 Bucket
