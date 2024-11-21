@@ -62,7 +62,7 @@ and the frontend can be hosted on an S3 bucket.
    nano index.hmtl
    ```
    Use the down arrow key to scroll down to where it says const server. Delete everything
-   in the paraphrases after the http:// and paste the ec2EventsManager Public IPv4 address. Select
+   in the paraphrases after the http:// and the last /. Paste the ec2EventsManager Public IPv4 address. Select
    control+x to exit and then click y to save. Click enter to fully exit text editor.
   
 
@@ -116,48 +116,6 @@ and the frontend can be hosted on an S3 bucket.
 
 
 ## Deloyment
-### CLI Setup Instructions
-1. Open a terminal window on your local machine
-2. SSH into the EC2 instance you lanched. Add the Public IPv4 address of the ec2EventsManager.  Repeat step 8 of the EC2 instance configuartion if you need to copy the Public IPv4 address.
-   ```bash
-   ssh -i labsuser.pem ec2-user@your-public-ip
-   ```
-3. Install git:
-   ```bash
-   sudo yum install git
-   ```
-5. Clone this GitHub repository to your local machine:
-   ```bash
-   git clone 
-   ```
-   When prompted, type y 
-5. Change to the working directory:
-   ```bash
-   cd eventsManager
-   ```
-6. Create Virtual Enviroment:
-   ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate
-   ```
-7. Give permissions to and run the deploybot.sh cript
-   ```bash
-   chmod +x ./deploybot.sh
-   python ./deploybot.sh
-   ```
-8. The app should now be running and accessible at `http://your-public-ip/api/events`.
-    Repeat steps 1-3 of the S3 configuration.
-9. Navigate to your S3 bucket and select properties.
-
-10. Scroll down and copy the Bucket website endpoint
-11. Paste the url into a browser and the application will run.
-    
-12. To stop the application in the cloud 9 terminal window, run this command in the terminal
-   ```bash
-   python ./down.sh
-   ```
-   The applicaton will stop work now
-
 
 ### Cloud 9 Setup Instructions
 1. Open AWS Managment Console
@@ -177,7 +135,7 @@ and the frontend can be hosted on an S3 bucket.
    git clone 
    ```
 6. Under the eventsManager File directory, select index.hmtl and scroll down to where it
-   says const server. Delete everything in the paraphrases after the http:// and paste the ec2EventsManager Public IPv4 address. Repeat step 8 of the EC2 instance configuration if you need to copy the Public IPv4 address.
+   says const server. Delete everything in the paraphrases after the http:// and the last /. Paste the ec2EventsManager Public IPv4 address. Repeat step 8 of the EC2 instance configuration if you need to copy the Public IPv4 address.
 7. Under the eventsManager File directory, select deploybot.sh
 8. Replace the url after the http:// on line 21 with the Public IPv4 address of the ec2EventsManager
 9. Replace jr-28-10 with the name of the bucket you created for this application. if you need to copy the name of the bucket. Repeat steps 1-3 of the S3 configuration and then copy the name of the bucket you created
