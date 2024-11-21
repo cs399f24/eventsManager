@@ -126,29 +126,33 @@ and the frontend can be hosted on an S3 bucket.
    ```bash
    sudo yum install git
    ```
+5. Clone this GitHub repository to your local machine:
+   ```bash
+   git clone 
+   ```
    When prompted, type y 
-4. Change to the working directory:
+5. Change to the working directory:
    ```bash
    cd eventsManager
    ```
-5. Create Virtual Enviroment:
+6. Create Virtual Enviroment:
    ```bash
    python3 -m venv .venv
    source .venv/bin/activate
    ```
-6. Give permissions to and run the deploybot.sh cript
+7. Give permissions to and run the deploybot.sh cript
    ```bash
    chmod +x ./deploybot.sh
    python ./deploybot.sh
    ```
-7. The app should now be running and accessible at `http://your-public-ip/api/events`.
+8. The app should now be running and accessible at `http://your-public-ip/api/events`.
     Repeat steps 1-3 of the S3 configuration.
-8. Navigate to your S3 bucket and select properties.
+9. Navigate to your S3 bucket and select properties.
 
-9. Scroll down and copy the Bucket website endpoint
-10. Paste the url into a browser and the application will run.
+10. Scroll down and copy the Bucket website endpoint
+11. Paste the url into a browser and the application will run.
     
-11. To stop the application in the cloud 9 terminal window, run this command in the terminal
+12. To stop the application in the cloud 9 terminal window, run this command in the terminal
    ```bash
    python ./down.sh
    ```
