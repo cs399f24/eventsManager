@@ -11,7 +11,8 @@ and the frontend can be hosted on an S3 bucket.
 - **AWS Account** (Amazon Web Services)
 - **AWS EC2 instance** with a public IP address
 - **AWS S3 bucket** for static file hosting
-- **AWS DynamioDB** for storing 
+- **AWS DynamioDB** for storing
+- **AWS Cloud 9** for an optional integrated development environment
 - Basic knowledge of Flask, HTML, and JavaScript
 
 ---
@@ -50,7 +51,7 @@ and the frontend can be hosted on an S3 bucket.
 
 
 8. Navigate to the EC2 console and select instances. Select the ec2EventsManager instance. Copy the Public IPv4 address.
-9. Open terminal at the eventsManagerApp folder
+9. Open terminal at the eventsManagerApp folder you made 
 10. Change to the working directory:
    ```bash
    cd eventsManager
@@ -61,7 +62,7 @@ and the frontend can be hosted on an S3 bucket.
    nano index.hmtl
    ```
    Use the down arrow key to scroll down to where it says const server. Delete everything
-   in the paraphrases and paste the ec2EventsManager Public IPv4 address. Select
+   in the paraphrases after the http:// and paste the ec2EventsManager Public IPv4 address. Select
    control+x to exit and then click y to save. Click enter to fully exit text editor.
   
 
@@ -134,10 +135,10 @@ and the frontend can be hosted on an S3 bucket.
    git clone 
    ```
 6. Under the eventsManager File directory, select index.hmtl and scroll down to where it
-   says const server. Delete everything in the paraphrases and paste the ec2EventsManager    Public IPv4 address. Repeat step 8 of the EC2 instance configuartion if you need to       copy the Public IPv4 address.
+   says const server. Delete everything in the paraphrases after the http:// and paste the ec2EventsManager Public IPv4 address. Repeat step 8 of the EC2 instance configuartion if you need to copy the Public IPv4 address.
 7. Under the eventsManager File directory, select deploybot.sh
-8. Replace the url on line 21 with the Public IPv4 address of the ec2EventsManager
-9. Replace jr-28-10 with the name of the bucket you created for this application. if you     need to copy the name of the bucket. Repeat steps 1-3 of the S3 configuration and then    copy the name of the bucket you created
+8. Replace the url after the http:// on line 21 with the Public IPv4 address of the ec2EventsManager
+9. Replace jr-28-10 with the name of the bucket you created for this application. if you need to copy the name of the bucket. Repeat steps 1-3 of the S3 configuration and then copy the name of the bucket you created
 10. In the termnal window where you clone the git repo. Change to the working directory:
    ```bash
    cd eventsManager
