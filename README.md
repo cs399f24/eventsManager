@@ -15,7 +15,7 @@ and the frontend can be hosted on an S3 bucket.
 - Basic knowledge of Flask, HTML, and JavaScript
 
 ---
-# Configuration
+## Configuration
 1. Create a folder named eventsManagerApp and open terminal at the folder
 2. Install git:
    ```bash
@@ -26,7 +26,7 @@ and the frontend can be hosted on an S3 bucket.
    git clone 
    ```
 
-## EC2 Instance 
+### EC2 Instance 
 
 1. Open AWS Managment Console
 2. In the search box to the top right of AWS Managment Console, search for and choose EC2 to open the AWS EC2 console
@@ -53,97 +53,35 @@ and the frontend can be hosted on an S3 bucket.
 9. Open terminal at the eventsManagerApp folder
 10. Change to the working directory:
    ```bash
-   cd events-manager
+   cd eventsManager
    ```
 12. Use text editor to change the ec2 to change the ip address in the index.hmtl file
    3. Change to the working directory:
    ```bash
    nano index.hmtl
    ```
-   Use the down arrow key to scroll down to const server. Delete everything in the           paraphrases and paste the ec2EventsManager Public IPv4 address. Select control+x to       exit and then click y to save. Click enter to fully exit text editor.
+   Use the down arrow key to scroll down to where it says const server. Delete everything
+   in the paraphrases and paste the ec2EventsManager Public IPv4 address. Select
+   control+x to exit and then click y to save. Click enter to fully exit text editor.
   
 
-## S3 Bucket
+### S3 Bucket
 1. Open AWS Managment Console
 2. In the search box to the top right of AWS Managment Console, search for and choose S3
 3. Open the S3 console 
 4. Select create a bucket
-   **Bucket Name:**
-6. 
-
-## DynamioDB
-
-# CLI Setup Instructions
-
-
-# Cloud 9 Setup Instructions
-
-
-## Configure 9 
-
-
-### Step 1: Set Up the EC2 Instance
-
-1. Launch an EC2 instance (Amazon Linux or Ubuntu recommended).
-2. SSH into your instance:
-   ```bash
-   ssh -i "your-key.pem" ec2-user@your-public-ip
-   ```
-
-### Step 2: Clone the Repository
-
-1. Install git:
-   ```bash
-   sudo yum install git
-   ```
-
-2. Clone the GitHub repository to your local machine:
-   ```bash
-   git clone https://github.com/yourusername/events-manager.git
-   ```
-
-3. Change to the working directory:
-   ```bash
-   cd events-manager
-   ```
-
-4. Create Virtual Enviroment:
-   ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate
-   ```
-
-5. Install Python3 pip package:
-   ```bash
-   sudo yum install python3-pip -y
-   ```
-
-6. Install Python dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-7. Run the Flask app on the instance:
-   ```bash
-   sudo python3 app.py
-   ```
    
-   The app should now be running and accessible at `http://your-public-ip/api/events`.
-
-### Step 4: Update Frontend with EC2 IP Address
-
-1. Open `index.html` from the cloned repository and replace the server variable with your EC2 instance’s public IP address:
-   ```javascript
-   const server = 'http://your-public-ip';
-   ```
-
-### Step 5: Host the Frontend on S3
-
-1. Go to your AWS S3 dashboard and create a new bucket.
-2. In the **Permissions** tab, enable **public access** and configure **bucket policy** to allow public access to files.
-3. Upload `index.html` and all necessary frontend files to your S3 bucket.
-4. Enable **Static Website Hosting** in the bucket properties, and note the URL provided for accessing your site.
- ```bash
+   **Bucket Name:** eventsManagerS3Bucket <add today's date (ex. eventsmanager_s3bucket-     XX-XX-XX)>
+   
+   In the Permissions tab, enable public access and configure bucket policy to allow
+   public access to files. Select the ackowledgement statement. Then select create
+   bucket. 
+   
+6. Navigate the S3 Console to buckets and select the bucket you just created.
+7. Navigate to and select Permissions tab.
+8. Scroll down to Bucket Policy and click edit
+9. Paste this bucket policy
+  ```bash
  {
     "Version": "2012-10-17",
     "Statement": [
@@ -156,7 +94,74 @@ and the frontend can be hosted on an S3 bucket.
     ]
 }
 ```
+   **Click save changes**
+   
+10. Select upload and upload the index.hmtl from the eventsManagerApp folder you created. Once uploaded click upload at the bottom. You have sucessfuly created and configured the S3 bucket.
 
-### Step 6: Access the Application
+### DynamioDB
+1. Open AWS Managment Console
+2. In the search box to the top right of AWS Managment Console, search for and choose DynamoDB to open the AWS DynamoDB console
+3. Select create table
+   
+   **Name:** EventsTable
 
-Navigate to the S3 URL from Step 4 to use the application.
+   **Partition Key:** event_id
+
+   **Keep Default Settings and select Create Table**
+
+4. You have sucessfully created and configured a DynamioDB table
+
+
+## Deloyment
+### CLI Setup Instructions
+
+
+### Cloud 9 Setup Instructions
+1. Open AWS Managment Console
+2. In the search box to the top right of AWS Managment Console, search for and choose Cloud 9 to open the AWS Cloud 9 console
+3. Select create environment
+   
+   **Name:** eventsManger_Cloud9  <add today's date (ex.  eventsManger_Cloud9-XX-XX-XX)>
+
+   **Scroll to network setting and select the secure shell option**
+
+   **Select Create**
+   
+4. Select and open the Cloud9 environment your just created
+5. In terminal window where it says voclabs:~/environment $
+   Clone this GitHub repository to your local machine:
+   ```bash
+   git clone 
+   ```
+6. Under the eventsManager File directory, select index.hmtl and scroll down to where it
+   says const server. Delete everything in the paraphrases and paste the ec2EventsManager    Public IPv4 address. Repeat step 8 of the EC2 instance configuartion if you need to       copy the Public IPv4 address.
+7. Under the eventsManager File directory, select deploybot.sh
+8. Replace the url on line 21 with the Public IPv4 address of the ec2EventsManager
+9. Replace jr-28-10 with the name of the bucket you created for this application. if you     need to copy the name of the bucket. Repeat steps 1-3 of the S3 configuration and then    copy the name of the bucket you created
+10. In the termnal window where you clone the git repo. Change to the working directory:
+   ```bash
+   cd eventsManager
+   ```
+11. Create Virtual Enviroment:
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+12. Give permissions to and run the deploybot.sh cript
+   ```bash
+   chmod +x ./deploybot.sh
+   python ./deploybot.sh
+   ```
+13. The app should now be running and accessible at `http://your-public-ip/api/events`.
+    Repeat steps 1-3 of the S3 configuration.
+14. Navigate to your S3 bucket and select properties.
+
+15. Scroll down and copy the Bucket website endpoint
+16. Paste the url into a browser and the application will run.
+    
+17. To stop the application in the cloud 9 terminal window, run this command in the           terminal
+   ```bash
+   python ./down.sh
+   ```
+   The applicaton will stop work now
+
