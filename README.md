@@ -13,7 +13,7 @@ and the frontend can be hosted on an S3 bucket.
 - **AWS S3 bucket** for static file hosting
 - **AWS DynamioDB** for storing
 - **AWS Cloud 9** for an optional integrated development environment
-- Basic knowledge of Flask, HTML, and JavaScript
+- Basic knowledge of Github, basic AWS services, Flask, HTML, and JavaScript
 
 ---
 ## Configuration
