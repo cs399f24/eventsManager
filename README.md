@@ -27,7 +27,7 @@ and the frontend can be hosted on an S3 bucket.
    git clone 
    ```
 
-### EC2 Instance 
+### EC2 Instance Configuration
 
 1. Open AWS Managment Console
 2. In the search box to the top right of AWS Managment Console, search for and choose EC2 to open the AWS EC2 console
@@ -66,7 +66,8 @@ and the frontend can be hosted on an S3 bucket.
    control+x to exit and then click y to save. Click enter to fully exit text editor.
   
 
-### S3 Bucket
+### S3 Bucket Configuration
+
 1. Open AWS Managment Console
 2. In the search box to the top right of AWS Managment Console, search for and choose S3
 3. Open the S3 console 
@@ -99,7 +100,8 @@ and the frontend can be hosted on an S3 bucket.
    
 10. Select upload and upload the index.hmtl from the eventsManagerApp folder you created. Once uploaded click upload at the bottom. You have sucessfuly created and configured the S3 bucket.
 
-### DynamioDB
+### DynamioDB Configuration
+
 1. Open AWS Managment Console
 2. In the search box to the top right of AWS Managment Console, search for and choose DynamoDB to open the AWS DynamoDB console
 3. Select create table
@@ -115,6 +117,41 @@ and the frontend can be hosted on an S3 bucket.
 
 ## Deloyment
 ### CLI Setup Instructions
+1. Open a terminal window on your local machine
+2. SSH into the EC2 instance you lanched. Add the Public IPv4 address of the ec2EventsManager.  Repeat step 8 of the EC2 instance configuartion if you need to copy the Public IPv4 address.
+   ```bash
+   ssh -i labsuser.pem ec2-user@your-public-ip
+   ```
+3. Install git:
+   ```bash
+   sudo yum install git
+   ```
+4. Change to the working directory:
+   ```bash
+   cd eventsManager
+   ```
+5. Create Virtual Enviroment:
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+6. Give permissions to and run the deploybot.sh cript
+   ```bash
+   chmod +x ./deploybot.sh
+   python ./deploybot.sh
+   ```
+7. The app should now be running and accessible at `http://your-public-ip/api/events`.
+    Repeat steps 1-3 of the S3 configuration.
+8. Navigate to your S3 bucket and select properties.
+
+9. Scroll down and copy the Bucket website endpoint
+10. Paste the url into a browser and the application will run.
+    
+11. To stop the application in the cloud 9 terminal window, run this command in the terminal
+   ```bash
+   python ./down.sh
+   ```
+   The applicaton will stop work now
 
 
 ### Cloud 9 Setup Instructions
@@ -135,7 +172,7 @@ and the frontend can be hosted on an S3 bucket.
    git clone 
    ```
 6. Under the eventsManager File directory, select index.hmtl and scroll down to where it
-   says const server. Delete everything in the paraphrases after the http:// and paste the ec2EventsManager Public IPv4 address. Repeat step 8 of the EC2 instance configuartion if you need to copy the Public IPv4 address.
+   says const server. Delete everything in the paraphrases after the http:// and paste the ec2EventsManager Public IPv4 address. Repeat step 8 of the EC2 instance configuration if you need to copy the Public IPv4 address.
 7. Under the eventsManager File directory, select deploybot.sh
 8. Replace the url after the http:// on line 21 with the Public IPv4 address of the ec2EventsManager
 9. Replace jr-28-10 with the name of the bucket you created for this application. if you need to copy the name of the bucket. Repeat steps 1-3 of the S3 configuration and then copy the name of the bucket you created
@@ -160,7 +197,7 @@ and the frontend can be hosted on an S3 bucket.
 15. Scroll down and copy the Bucket website endpoint
 16. Paste the url into a browser and the application will run.
     
-17. To stop the application in the cloud 9 terminal window, run this command in the           terminal
+17. To stop the application in the cloud 9 terminal window, run this command in the terminal
    ```bash
    python ./down.sh
    ```
