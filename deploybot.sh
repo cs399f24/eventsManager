@@ -12,7 +12,7 @@ export AWS_REGION="us-east-1"  # Replace with your AWS region if different
 export DYNAMO_TABLE="EventsTable"  # Replace with your DynamoDB table name
 
 # Download the HTML file from S3
-S3_BUCKET="jr-28-10"  # Replace with your actual S3 bucket name
+S3_BUCKET="<Your S3 Bucket Name>"  # Replace with your actual S3 bucket name
 aws s3 cp s3://$S3_BUCKET/index.html static/index.html
 
 # Run the Flask application on startup, specifying the host and port
