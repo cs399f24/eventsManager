@@ -1,4 +1,4 @@
-<img width="934" alt="Screenshot 2024-11-08 at 10 06 28 AM" src="https://github.com/user-attachments/assets/717916a2-4b47-42f2-9ee8-65ac864ed72e">
+<img width="1128" alt="Screenshot 2024-11-21 at 8 34 51 PM" src="https://github.com/user-attachments/assets/cc13db37-8318-4a58-8763-4c52965b9831">
 
 # Events Manager
 
