@@ -58,7 +58,7 @@ and the frontend can be hosted on an S3 bucket.
    cd eventsManager/update_index.sh
    ```
 11. Change instance_id and s3_bucket
-    ```bash
+   ```bash
    INSTANCE_ID="<Your Instance ID>"
    S3_BUCKET_NAME="<Your S3 Bucket Name>"
    ```
