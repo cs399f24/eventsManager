@@ -5,7 +5,7 @@ sudo yum update -y
 
 # Install Python and necessary packages
 sudo yum install python3-pip aws-cli -y
-pip3 install flask boto3 flask-cors
+sudo pip3 install flask boto3 flask-cors
 
 # Set up environment variables (adjust as needed for your AWS region or table name)
 export AWS_REGION="us-east-1"  # Replace with your AWS region if different
