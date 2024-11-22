@@ -162,7 +162,7 @@ and the frontend can be hosted on an S3 bucket.
     
 17. To stop the application in the cloud 9 terminal window, run this command in the terminal
    ```bash
-   python ./down.sh
+   ./down.sh
    ```
    The applicaton will stop work now
 
