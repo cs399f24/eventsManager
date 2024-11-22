@@ -50,21 +50,26 @@ and the frontend can be hosted on an S3 bucket.
 7. Lastly, select the instance again and choose the security tab. Scroll down to IAM role and it should say LabRole. Scroll down to Security Groups and it should have the httpssh and the launch-wizard-13 security groups. If you don't have the IAM role or right security groups. Repeat steps 4 through 5. Otherwise, you have successfully created and configured the EC2 instance.
 
 
-8. Navigate to the EC2 console and select instances. Select the ec2EventsManager instance. Copy the Public IPv4 address.
+8. Navigate to the EC2 console and select instances. Select the ec2EventsManager instance. Copy instance id
+
 9. Open terminal at the eventsManagerApp folder you made 
 10. Change to the working directory:
    ```bash
-   cd eventsManager
+   cd eventsManager/update_index.sh
    ```
-12. Use text editor to change the ec2 to change the ip address in the index.hmtl file
+11. Change instance_id and s3_bucket
+    ```bash
+   INSTANCE_ID="<Your Instance ID>"
+   S3_BUCKET_NAME="<Your S3 Bucket Name>"
+   ```
+   
+12. Run update_index.sh
    3. Change to the working directory:
    ```bash
-   nano index.hmtl
+   chmod +x update_index.sh
+   ./update_index.sh 
    ```
-   Use the down arrow key to scroll down to where it says const server. Delete everything
-   in the paraphrases after the http:// and the last /. Paste the ec2EventsManager Public IPv4 address. Select
-   control+x to exit and then click y to save. Click enter to fully exit text editor.
-  
+ 
 
 ### S3 Bucket Configuration
 
