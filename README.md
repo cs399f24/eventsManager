@@ -12,6 +12,7 @@ and the frontend can be hosted on an S3 bucket.
 - **AWS EC2 instance** with a public IP address
 - **AWS S3 bucket** for static file hosting
 - **AWS DynamioDB** for storing
+- **AWS SNS** for email notifications
 - **AWS Cloud 9** for an optional integrated development environment
 - Basic knowledge of Github, basic AWS services, Flask, HTML, and JavaScript
 
