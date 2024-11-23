@@ -127,10 +127,12 @@ and the frontend can be hosted on an S3 bucket.
    ```bash
    git clone 
    ```
+   
 9. Change to the working directory:
    ```bash
    cd eventsManager
    ```
+   
 11. Create Virtual Enviroment:
    ```bash
    python3 -m venv .venv
