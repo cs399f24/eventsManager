@@ -149,7 +149,7 @@ It allows users to view, add, edit, and delete events. The backend API runs on a
 12. Give permissions to and run the deploybot.sh script
    ```bash
    chmod +x ./deploybot.sh
-   python ./deploybot.sh
+   ./deploybot.sh
    ```
 13. The app should now be running and accessible at `http://your-public-ip/api/events`.
     Repeat steps 1-3 of the S3 configuration.
