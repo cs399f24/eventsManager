@@ -3,8 +3,7 @@
 # Events Manager
 
 This is a simple events management application built with Flask for the backend and a static HTML/CSS/JavaScript frontend. 
-It allows users to view, add, edit, and delete events. The backend API runs on an AWS EC2 instance, 
-and the frontend can be hosted on an S3 bucket.
+It allows users to view, add, edit, and delete events. The backend API runs on an AWS EC2 instance, the data for events is stored in database in DynamioDB, actions in the UI trigger a SNS notification to an email address and the frontend is be hosted on an S3 bucket.
 
 ## Prerequisites
 
@@ -15,6 +14,7 @@ and the frontend can be hosted on an S3 bucket.
 - **AWS SNS** for email notifications
 - **AWS Cloud 9** for an optional integrated development environment
 - Basic knowledge of Github, basic AWS services, Flask, HTML, and JavaScript
+- an email address
 
 ---
 ## Configuration
@@ -164,5 +164,5 @@ and the frontend can be hosted on an S3 bucket.
     chmod +x ./down.sh
    ./down.sh
    ```
-   The applicaton will stop work now
+   The applicaton will stop working now
 
