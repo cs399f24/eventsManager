@@ -18,15 +18,6 @@ and the frontend can be hosted on an S3 bucket.
 
 ---
 ## Configuration
-1. Create a folder named eventsManagerApp and open terminal at the folder
-2. Install git:
-   ```bash
-   sudo yum install git
-   ```
-3. Clone this GitHub repository to your local machine:
-   ```bash
-   git clone 
-   ```
 
 ### EC2 Instance Configuration
 
@@ -46,31 +37,9 @@ and the frontend can be hosted on an S3 bucket.
    
    **Keep the rest of the default settings and choose Launch Instance**
    
-5. Once the instance is in the running state, select the instance and then select the actions dropdown. Select Security and then select change security groups. In the slect security groups search bar, type httpssh and select the correct security group. Hit add security group and click save. 
-6. Select the instance again and then select the actions dropdown. Select Security and then select Modify IAM role. Click the Choose IAM role dropdown and select LabInstanceProfile. Then, click update IAM role.
-7. Lastly, select the instance again and choose the security tab. Scroll down to IAM role and it should say LabRole. Scroll down to Security Groups and it should have the httpssh and the launch-wizard-13 security groups. If you don't have the IAM role or right security groups. Repeat steps 4 through 5. Otherwise, you have successfully created and configured the EC2 instance.
-
-
-8. Navigate to the EC2 console and select instances. Select the ec2EventsManager instance. Copy instance id
-
-9. Open terminal at the eventsManagerApp folder you made 
-10. Change to the working directory:
-   ```bash
-   cd eventsManager/update_index.sh
-   ```
-11. Change instance_id and s3_bucket
-   ```bash
-   INSTANCE_ID="<Your Instance ID>"
-   S3_BUCKET_NAME="<Your S3 Bucket Name>"
-   ```
-   
-12. Run update_index.sh
-   3. Change to the working directory:
-   ```bash
-   chmod +x update_index.sh
-   ./update_index.sh 
-   ```
- 
+4. Once the instance is in the running state, select the instance and then select the actions dropdown. Select Security and then select change security groups. In the slect security groups search bar, type httpssh and select the correct security group. Hit add security group and click save. 
+5. Select the instance again and then select the actions dropdown. Select Security and then select Modify IAM role. Click the Choose IAM role dropdown and select LabInstanceProfile. Then, click update IAM role.
+6. Lastly, select the instance again and choose the security tab. Scroll down to IAM role and it should say LabRole. Scroll down to Security Groups and it should have the httpssh and the launch-wizard-13 security groups. If you don't have the IAM role or right security groups. Repeat steps 4 through 5. Otherwise, you have successfully created and configured the EC2 instance.
 
 ### S3 Bucket Configuration
 
@@ -79,16 +48,16 @@ and the frontend can be hosted on an S3 bucket.
 3. Open the S3 console 
 4. Select create a bucket
    
-   **Bucket Name:** eventsManagerS3Bucket <add today's date (ex. eventsmanager_s3bucket-     XX-XX-XX)>
+   **Bucket Name:** eventsManagerS3Bucket <add today's date (ex. eventsmanager_s3bucket-XX-XX-XX)>
    
    In the Permissions tab, enable public access and configure bucket policy to allow
    public access to files. Select the ackowledgement statement. Then select create
    bucket. 
    
-6. Navigate the S3 Console to buckets and select the bucket you just created.
-7. Navigate to and select Permissions tab.
-8. Scroll down to Bucket Policy and click edit
-9. Paste this bucket policy
+5. Navigate the S3 Console to buckets and select the bucket you just created.
+6. Navigate to and select Permissions tab.
+7. Scroll down to Bucket Policy and click edit
+8. Paste this bucket policy
   ```bash
  {
     "Version": "2012-10-17",
@@ -104,7 +73,7 @@ and the frontend can be hosted on an S3 bucket.
 ```
    **Click save changes**
    
-10. Select upload and upload the index.hmtl from the eventsManagerApp folder you created. Once uploaded click upload at the bottom. You have sucessfuly created and configured the S3 bucket.
+   You have sucessfuly created and configured the S3 bucket.
 
 ### DynamioDB Configuration
 
@@ -118,14 +87,29 @@ and the frontend can be hosted on an S3 bucket.
 
    **Keep Default Settings and select Create Table**
 
-4. You have sucessfully created and configured a DynamioDB table
+   You have sucessfully created and configured a DynamioDB table
 
+### SNS Configuration
+
+1. Open AWS Managment Console
+2. In the search box to the top right of AWS Managment Console, search for and choose Simple Notification Service to open the AWS SNS console
+3. Select Topics
+4. Select Create Topic
+   Change the FIFO to Standard
+   Name: EventsManagerNotifications
+   Select Create Topic
+5. Select EventsManagerNotifications
+6. Select Create Subscription
+7. Under Protocol, select email
+8. Under Endpoint, enter in the desired email address to be notified
+9. Select Create Subscription
+10. In email inbox, confirm subscription to SNS
 
 ## Deloyment
 
-### Cloud 9 Setup Instructions
+### Cloud9 Setup Instructions
 1. Open AWS Managment Console
-2. In the search box to the top right of AWS Managment Console, search for and choose Cloud 9 to open the AWS Cloud 9 console
+2. In the search box to the top right of AWS Managment Console, search for and choose Cloud 9 to open the AWS Cloud9 console
 3. Select create environment
    
    **Name:** eventsManger_Cloud9  <add today's date (ex.  eventsManger_Cloud9-XX-XX-XX)>
@@ -135,17 +119,15 @@ and the frontend can be hosted on an S3 bucket.
    **Select Create**
    
 4. Select and open the Cloud9 environment your just created
-5. In terminal window where it says voclabs:~/environment $
+5. Select the drop down arrow for the name of the Cloud9. Select the drop down arrow for eventsManager. Select the update_index.sh file.
+6. Paste the name of the bucket and the IPv4 address of the EC2 instance you created
+7. Select the file named app.py and change line 20 in the app.py file for topic ARN for the SNS
+8. In terminal window where it says voclabs:~/environment $
    Clone this GitHub repository to your local machine:
    ```bash
    git clone 
    ```
-6. Under the eventsManager File directory, select index.hmtl and scroll down to where it
-   says const server. Delete everything in the paraphrases after the http:// and the last /. Paste the ec2EventsManager Public IPv4 address. Repeat step 8 of the EC2 instance configuration if you need to copy the Public IPv4 address.
-7. Under the eventsManager File directory, select deploybot.sh
-8. Replace the url after the http:// on line 21 with the Public IPv4 address of the ec2EventsManager
-9. Replace jr-28-10 with the name of the bucket you created for this application. if you need to copy the name of the bucket. Repeat steps 1-3 of the S3 configuration and then copy the name of the bucket you created
-10. In the termnal window where you clone the git repo. Change to the working directory:
+9. Change to the working directory:
    ```bash
    cd eventsManager
    ```
@@ -154,20 +136,30 @@ and the frontend can be hosted on an S3 bucket.
    python3 -m venv .venv
    source .venv/bin/activate
    ```
-12. Give permissions to and run the deploybot.sh cript
+
+12. Run update_index.sh
+   3. Change to the working directory:
+   ```bash
+   chmod +x update_index.sh
+   ./update_index.sh 
+   ```
+
+12. Give permissions to and run the deploybot.sh script
    ```bash
    chmod +x ./deploybot.sh
    python ./deploybot.sh
    ```
 13. The app should now be running and accessible at `http://your-public-ip/api/events`.
     Repeat steps 1-3 of the S3 configuration.
-14. Navigate to your S3 bucket and select properties.
-
-15. Scroll down and copy the Bucket website endpoint
-16. Paste the url into a browser and the application will run.
     
-17. To stop the application in the cloud 9 terminal window, run this command in the terminal
+15. Navigate to your S3 bucket and select properties.
+
+16. Scroll down and copy the Bucket website endpoint
+17. Paste the url into a browser and the application will run.
+    
+18. To stop the application in the cloud 9 terminal window, run this command in the terminal. This will give permissions to and run the /down.sh script
    ```bash
+    chmod +x ./down.sh
    ./down.sh
    ```
    The applicaton will stop work now
