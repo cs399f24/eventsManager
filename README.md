@@ -11,12 +11,16 @@ It allows users to view, add, edit, and delete events. The backend API runs on a
   
    for access to amazon web services
 - **AWS EC2 instance** with a public IP address
+  
    for compute and to host our flsk server host our 
 - **AWS S3 bucket** for static file hosting
+  
    for static wesbite hosting  
 - **AWS DynamioDB** for storing
+  
    for data storage and oragization 
 - **AWS SNS** for email notifications
+  
    for email nofitcations of user interactions with the events manager 
 - **AWS Cloud 9** for an optional integrated development environment
 - Basic knowledge of Github, basic AWS services, Flask, HTML, and JavaScript
