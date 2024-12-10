@@ -87,17 +87,11 @@ It allows users to view, add, edit, and delete events. The backend API runs on a
 
 ### DynamioDB Configuration
 
-1. Open AWS Managment Console
-2. In the search box to the top right of AWS Managment Console, search for and choose DynamoDB to open the AWS DynamoDB console
-3. Select create table
-   
-   **Name:** EventsTable
-
-   **Partition Key:** event_id
-
-   **Keep Default Settings and select Create Table**
-
-   You have sucessfully created and configured a DynamioDB table
+1. Give permissions to and run the create_dynamo_table.sh script
+   ```bash
+   chmod +x create_dynamo_table.sh
+   ./create_dynamo_table.sh
+   ```
 
 ### SNS Configuration
 
