@@ -8,6 +8,7 @@ It allows users to view, add, edit, and delete events. The backend API runs on a
 ## Prerequisites
 
 - **AWS Account** (Amazon Web Services)
+  
    for access to amazon web services
 - **AWS EC2 instance** with a public IP address
    for compute and to host our flsk server host our 
