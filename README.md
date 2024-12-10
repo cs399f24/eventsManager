@@ -24,7 +24,7 @@ It allows users to view, add, edit, and delete events. The backend API runs on a
    for email nofitcations of user interactions with the events manager 
 - **AWS Cloud 9** for an optional integrated development environment
 - Basic knowledge of Github, basic AWS services, Flask, HTML, and JavaScript
-- an email address
+- A email address
 
 ---
 ## Configuration
