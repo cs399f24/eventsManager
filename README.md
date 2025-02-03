@@ -8,13 +8,23 @@ It allows users to view, add, edit, and delete events. The backend API runs on a
 ## Prerequisites
 
 - **AWS Account** (Amazon Web Services)
+  
+   for access to amazon web services
 - **AWS EC2 instance** with a public IP address
+  
+   for compute and to host our flsk server host our 
 - **AWS S3 bucket** for static file hosting
+  
+   for static wesbite hosting  
 - **AWS DynamioDB** for storing
+  
+   for data storage and oragization 
 - **AWS SNS** for email notifications
+  
+   for email nofitcations of user interactions with the events manager 
 - **AWS Cloud 9** for an optional integrated development environment
 - Basic knowledge of Github, basic AWS services, Flask, HTML, and JavaScript
-- an email address
+- A email address
 
 ---
 ## Configuration
@@ -77,17 +87,11 @@ It allows users to view, add, edit, and delete events. The backend API runs on a
 
 ### DynamioDB Configuration
 
-1. Open AWS Managment Console
-2. In the search box to the top right of AWS Managment Console, search for and choose DynamoDB to open the AWS DynamoDB console
-3. Select create table
-   
-   **Name:** EventsTable
-
-   **Partition Key:** event_id
-
-   **Keep Default Settings and select Create Table**
-
-   You have sucessfully created and configured a DynamioDB table
+1. Give permissions to and run the create_dynamo_table.sh script
+   ```bash
+   chmod +x create_dynamo_table.sh
+   ./create_dynamo_table.sh
+   ```
 
 ### SNS Configuration
 
